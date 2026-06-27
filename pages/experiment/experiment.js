@@ -14,7 +14,8 @@ Page({
     motorB: 0,
     voltage: 0,
     encJumpL: 0,
-    encJumpR: 0
+    encJumpR: 0,
+    motor3Duty: 20  // 3号电机PWM占空比百分比
   },
 
   encLogList: [],
@@ -858,6 +859,26 @@ Page({
     this.setData({ kp })
     if (!this.data.debugMode) {
       app.sendCommand('KP:' + kp.toFixed(2))
+    }
+  },
+
+  onMotor3Up() {
+    if (this.data.motor3Duty >= 100) return
+    const duty = this.data.motor3Duty + 5
+    const pwm = Math.round(duty * 255 / 100)
+    this.setData({ motor3Duty: duty })
+    if (!this.data.debugMode) {
+      app.sendCommand('MOTOR3:' + pwm)
+    }
+  },
+
+  onMotor3Down() {
+    if (this.data.motor3Duty <= 0) return
+    const duty = this.data.motor3Duty - 5
+    const pwm = Math.round(duty * 255 / 100)
+    this.setData({ motor3Duty: duty })
+    if (!this.data.debugMode) {
+      app.sendCommand('MOTOR3:' + pwm)
     }
   },
 

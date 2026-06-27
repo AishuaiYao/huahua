@@ -51,10 +51,17 @@ page {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  gap: 12rpx;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rpx;
   z-index: 10;
   white-space: nowrap;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
 }
 
 .start-btn {
@@ -68,6 +75,14 @@ page {
 
 .start-btn.running {
   background: #ff4d4f;
+}
+
+.start-btn-placeholder {
+  visibility: hidden;
+  padding: 2rpx 20rpx;
+  font-size: 16rpx;
+  font-weight: bold;
+  border-radius: 24rpx;
 }
 
 .speed-control {
@@ -213,4 +228,45 @@ page {
 
 .save-chart-btn:active {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* 力度控制栏（3号电机） */
+.motor3-control {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rpx 15rpx;
+  border-radius: 24rpx;
+}
+
+.motor3-label {
+  color: #fff;
+  font-size: 16rpx;
+}
+
+.motor3-btn {
+  width: 40rpx;
+  height: 40rpx;
+  background: #9C27B0;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 40rpx;
+}
+
+.motor3-btn:active {
+  background: #7B1FA2;
+}
+
+.motor3-value {
+  color: #9C27B0;
+  font-size: 16rpx;
+  font-weight: bold;
+  min-width: 40rpx;
+  text-align: center;
 }
